@@ -1,0 +1,105 @@
+.vz-data-widget {
+  height: 100%;
+  width: 100%;
+  min-height: 180px;
+  font-size: 16px;
+  color: #fff;
+  overflow: hidden;
+}
+.vz-data-title{
+  position:absolute;
+  right:28px;
+}
+
+
+.vz-data-heading{
+  background-color: darkred;
+  color: white;
+  height: 22px;
+  font-size: 15px;
+  line-height: 22px;
+
+}
+
+
+.vz-data-body{
+  position: relative;
+  text-align: center;
+  -webkit-background-size: cover;
+  background-position: center;
+
+  overflow: hidden;
+  min-height: 180px;
+}
+.vz-data-body .fa-spin{
+  position:absolute;
+
+  left: 5px;
+  top: 5px;
+}
+.vz-data-view{
+	background-color: rgba(0, 0, 0, 0.42);
+  position: absolute;
+
+  left: 5px;
+  top: 5px;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.11);
+
+}
+
+.vz-data-name{
+  height: 30px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 8px;
+  color:black;
+}
+
+.vz-data-measure1{
+	font-size:44px;
+	margin-top:-20px;
+  color:black;
+}
+
+/* temp css*/
+ul {
+  list-style: none;
+}
+.box {
+  height: 100%;
+  /* border: 1px solid #ccc; */
+  background-color: #fff;
+}
+.box-header {
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.34);
+  /* padding: 0 30px 0 10px; */
+  border-bottom: 1px solid #ccc;
+  cursor: move;
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+}
+.box-header h3 {
+  width: 100%;
+  margin: 5px;
+  display: inline-block;
+}
+.box-content {
+  height: 100%;
+  padding: 0px;
+}
+.box-header-btns {
+  top: 15px;
+  right: 10px;
+  cursor: pointer;
+  position: absolute;
+}
+a {
+  color: #ccc;
+}
+form {
+  margin-bottom: 0;
+}

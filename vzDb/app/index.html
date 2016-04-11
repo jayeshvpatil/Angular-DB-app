@@ -1,0 +1,139 @@
+<!doctype html>
+<html ng-app="vzDb">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>VZW Dashboard Application</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="bower_components/angular-gridster/dist/angular-gridster.min.css"/>
+  <!-- build:js(.) scripts/vendor.js -->
+  <link rel="stylesheet" href="styles/app.css">
+  <link rel="stylesheet" href="ext-modules/psFramework/psFramework.css">
+  <link rel="stylesheet" href="ext-modules/psMenu/psMenu.css">
+  <link rel="stylesheet" href="ext-modules/psDashboard/psDashboard.css">
+  <link rel="stylesheet" href="scripts/vzwidgets/vzData.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/javascript-detect-element-resize/detect-element-resize.js"></script>
+  <script src="bower_components/angular-gridster/src/angular-gridster.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/ngstorage/ngStorage.js"></script>
+  <script src="bower_components/d3/d3.js"></script>
+  <script src="bower_components/nvd3/nv.d3.js"></script>
+  <script src="bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
+  <script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
+  <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+
+  <!-- Menu -->
+  <script src="ext-modules/psMenu/psMenu.js"></script>
+  <script src="ext-modules/psMenu/psMenuController.js"></script>
+  <script src="ext-modules/psMenu/psMenuDirective.js"></script>
+  <script src="ext-modules/psMenu/psMenuItemDirective.js"></script>
+  <script src="ext-modules/psMenu/psMenuGroupDirective.js"></script>
+
+  <!-- Dashboard -->
+  <script src="ext-modules/psDashboard/psDashboard.js"></script>
+  <script src="ext-modules/psDashboard/psDashboardDirective.js"></script>
+  <script src='ext-modules/psDashboard/psWidgetBodyDirective.js'></script>
+
+  <!-- Framework -->
+  <script src="ext-modules/psFramework/psFramework.js"></script>
+  <script src="ext-modules/psFramework/psFrameworkController.js"></script>
+  <script src="ext-modules/psFramework/psFrameworkDirective.js"></script>
+  <script src="ext-modules/psFramework/psUserProfile/psUserProfileDirective.js"></script>
+  <script src="ext-modules/psFramework/psUserProfile/psUserProfileSmallDirective.js"></script>
+  <!-- Main -->
+  <script src="scripts/app.js"></script>
+  <script src="scripts/config.js"></script>
+  <script src="scripts/appRouteConfig.js"></script>
+  <!-- could be used for auth -->
+  <script src="scripts/vzdbController.js"></script>
+  <!-- temp data service -->
+  <script src="scripts/Services/dataService.js"></script>
+
+  <!-- Widgets -->
+  <script src="scripts/vzWidgets/vzReportDirective.js"></script>
+  <script src="scripts/vzWidgets/vzBarChartDirective.js"></script>
+  <!-- Pages directives -->
+  <script src="scripts/Directives/vzDashboardDirective.js"></script>
+  <script src="scripts/Directives/vzTrendDirective.js"></script>
+  <script src="scripts/Directives/vzSummaryDirective.js"></script>
+
+
+  <!-- Settings FilterDialog -->
+  <script src="scripts/FilterDialog/vzFilterReportController.js"></script>
+  <script src="scripts/FilterDialog/vzFilterBarController.js"></script>
+
+
+  <!-- Widget scripts-->
+
+  <!-- endbuild -->
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/nvd3/src/nv.d3.css"/>
+  <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css"/>
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+
+
+  <!-- endbuild -->
+</head>
+<body class="container-fluid" ng-controller="vzdbController">
+<!--[if lte IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
+<div ng-switch="state">
+  <div ng-switch-when="unauthorized" class="sign-in-form">
+    <h2>Verizon Wireless Dashboard Application</h2>
+    <h4>Sign In</h4>
+    <form>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="text" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control"/>
+      </div>
+    </form>
+    <button class="btn btn-default" ng-click="signIn()">Sign In</button>
+  </div>
+  <div ng-switch-default>
+    <ps-framework title='Verizon Wireless' subtitle='Dashboard Application' icon-file='images/logo.png'>
+      <ps-menu>
+        <ps-menu-item label='Dashboard' icon='fa-dashboard' route='dashboard'></ps-menu-item>
+        <ps-menu-item label='Trend' icon='fa-square' route='trend'></ps-menu-item>
+        <ps-menu-item label='Detail' icon='fa-arrows' route='detail'></ps-menu-item>
+        <ps-menu-group label='Equipment' icon='fa-gears'>
+          <ps-menu-item label='Item1' icon='fa-unlink' route='item1'></ps-menu-item>
+          <ps-menu-item label='Item2' icon='fa-magic' route='item2'></ps-menu-item>
+          <ps-menu-item label='Item3' icon='fa-life-ring' route='item3'></ps-menu-item>
+        </ps-menu-group>
+      </ps-menu>
+    </ps-framework>
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<div class='vz-data-widget'>
+  <div class='vz-data-heading'>
+
+    <span class="vz-data-title">{{selectedData.name}} Bar Chart</span>
+  </div>
+  <div>
+    <div ng-if="!isLoaded && !hasError">
+      <i class="fa fa-refresh fa-2x fa-spin"></i>
+    </div>
+    <div ng-if="isLoaded">
+      <div>
+        <nvd3-multi-bar-chart
+          data="selectedData.chartdata"
+          id="BarChart"
+          showXAxis="true"
+          showYAxis="true"
+          showLegend="true"
+          showControls="true"
+          noData="No Data For You!"
+          interactive="true"
+          tooltips="true"
+          tooltipcontent="toolTipContentFunction()"
+          color="colorFunction()">
+          <svg></svg>
+        </nvd3-multi-bar-chart>
+      </div>
+    </div>
+    <div ng-if="hasError">
+      <h4> Error Loading Widget</h4>
+      <button class="btn btn-primary" ng-click="loadData()">Reload</button>
+    </div>
+  </div>
+
+
+</div>
